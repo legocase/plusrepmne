@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой сайт</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://i.pinimg.com/originals/62/30/1e/62301e5833efcb941bc38cb980a984b2.gif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100vh;
+            font-family: "Lato", sans-serif;
+            color: white;
+            position: relative;
+        }
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+        #main {
+            transition: margin-left .5s;
+            padding: 16px;
+        }
+        /* Модальное окно */
+        .modal {
+            display: none; /* Скрыто по умолчанию */
+            position: fixed;
+            z-index: 2;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7); /* Полупрозрачный фон */
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto; /* Центрирование */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Ширина модального окна */
+            color: black;
+            text-align: center;
+            position: relative;
+            top: 50%; /* Центрирование по вертикали */
+            transform: translateY(-50%); /* Центрирование по вертикали */
+        }
+        .close-modal {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close-modal:hover,
+        .close-modal:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <a onclick="openModal()">ХТО Я</a>
+    <a onclick="openModal('wall')">стена</a>
+    <a onclick="openModal('clients')">Clients</a>
+    <a onclick="openModal('contact')">Contact</a>
+</div>
+<div id="main">
+    <h1>Добро пожаловать на мой сайт!</h1>
+    <p>Click on the element below to open the side navigation menu, and push this content to the right.</p>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">☰ открыть</span>
+</div>
+<!-- Модальные окна -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <h2>Информация о вас</h2>
+        <img src="https://i.pinimg.com/564x/f1/2d/02/f12d02e3663ca4dfc08400f3cab89138.jpg" alt="Информация" style="max-width: 100%; height: auto;" />
+        <p>Здесь вы можете добавить информацию о себе.</p>
+    </div>
+</div>
+<div id="wallModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('wall')">&times;</span>
+        <h2>Стена</h2>
+        <p>Здесь будет информация о стене.</p>
+    </div>
+</div>
+<div id="clientsModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('clients')">&times;</span>
+        <h2>Clients</h2>
+        <p>Здесь будет информация о клиентах.</p>
+    </div>
+</div>
+<div id="contactModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('contact')">&times;</span>
+        <h2>Contact</h2>
+        <p>Здесь будет информация о контактах.</p>
+    </div>
+</div>
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+}
+function openModal(modalType) {
+    closeNav(); // Закрыть сайдбар при открытии модального окна
+    if (modalType) {
+        document.getElementById(modalType + 'Modal').style.display = "block";
+    } else {
+        document.getElementById("myModal").style.display = "block";
+    }
+}
+function closeModal(modalType) {
+    if (modalType) {
+        document.getElementById(modalType + 'Modal').style.display = "none";
+    } else {
+        document.querySelectorAll('.modal').forEach(modal => modal.style.display = "none");
+    }
+}
+// Закрытие модального окна при клике вне его
+window.onclick = function(event) {
+    if (event.target.classList.contains('modal')) {
+        closeModal();
+    }
+}
+</script>
+</body>
+</html>
+
+Найти еще
